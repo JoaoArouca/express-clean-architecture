@@ -1,7 +1,7 @@
-import { ProductType } from "../shared/schemas";
+import { IProduct } from "../interfaces";
 
 class Product {
-  id: number;
+  id: string;
   name: string;
   description: string;
   price: number;
@@ -19,8 +19,8 @@ class Product {
     category,
     createdAt,
     updatedAt,
-  }: ProductType) {
-    this.id = id ?? 0;
+  }: IProduct) {
+    this.id = id;
     this.name = name;
     this.description = description;
     this.price = price;
