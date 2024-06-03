@@ -1,11 +1,14 @@
 import { IProduct } from "../../domain/interfaces";
-import { IInMemoryRepository } from "./InMemoryRepositoryInterface";
+import { IProductRepository } from "../../application/repositories/IProductRepository";
 
-export class InMemoryRepository implements IInMemoryRepository {
-    private localDatabase: IProduct[] = []
-    
-    save(product: IProduct): void {
-        this.localDatabase.push(product);
-    }
-    
+export class InMemoryRepositoryImp implements IProductRepository {
+  private localDatabase: IProduct[] = [];
+
+  create(product: IProduct): void {
+    this.localDatabase.push(product);
+  }
+
+  getAll(): IProduct[] {
+      return this.localDatabase
+  }
 }

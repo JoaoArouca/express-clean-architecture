@@ -1,4 +1,5 @@
 import { IProduct } from "../interfaces";
+import { productSchema } from "../schemas";
 
 class Product {
   id: string;
@@ -20,14 +21,24 @@ class Product {
     createdAt,
     updatedAt,
   }: IProduct) {
-    this.id = id;
-    this.name = name;
-    this.description = description;
-    this.price = price;
-    this.quantity = quantity;
-    this.category = category;
-    this.createdAt = createdAt ?? new Date();
-    this.updatedAt = updatedAt ?? new Date();
+    const parsedProduct = productSchema.parse({
+      id,
+      name,
+      description,
+      price,
+      quantity,
+      category,
+      createdAt,
+      updatedAt,
+    });
+    this.id = parsedProduct.id;
+    this.name = parsedProduct.name;
+    this.description = parsedProduct.description;
+    this.price = parsedProduct.price;
+    this.quantity = parsedProduct.quantity;
+    this.category = parsedProduct.category;
+    this.createdAt = parsedProduct.createdAt;
+    this.updatedAt = parsedProduct.updatedAt;
   }
 }
 
